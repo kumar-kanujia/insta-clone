@@ -22,6 +22,7 @@ import { useEffect, useRef, useState } from "react";
 import { Label } from "./ui/label";
 import { Switch } from "./ui/switch";
 import { useTheme } from "next-themes";
+import { signOut } from "next-auth/react";
 
 const MoreDropdown = () => {
   const [open, setOpen] = useState(false);
@@ -90,7 +91,7 @@ const MoreDropdown = () => {
               <p>Switch appearance</p>
             </DropdownMenuItem>
 
-            <DropdownMenuItem className="menuItem" onClick={() => {}}>
+            <DropdownMenuItem className="menuItem" onClick={() => signOut()}>
               <LogOut size={20} />
               <p>Log out</p>
             </DropdownMenuItem>
@@ -100,7 +101,11 @@ const MoreDropdown = () => {
         {showModeToggle && (
           <>
             <div className="flex items-center border-b border-gray-200 dark:border-neutral-700 py-3.5 px-2.5">
-              <ChevronLeft size={18} onClick={() => setShowModeToggle(false)} />
+              <ChevronLeft
+                size={18}
+                onClick={() => setShowModeToggle(false)}
+                className="cursor-pointer"
+              />
               <p className="font-bold ml-1">Switch appearance</p>
               {theme === "dark" ? (
                 <Moon size={20} className="ml-auto" />

@@ -1,0 +1,23 @@
+// import Posts from "@/components/Posts";
+// import { PostsSkeleton } from "@/components/Skeletons";
+import Posts from "@/components/Posts";
+import { Suspense } from "react";
+
+const DashboardPage = () => {
+  return (
+    <section className="flex w-full flex-grow">
+      <div className="flex flex-col flex-1 gap-y-8 max-w-lg mx-auto pb-20">
+        <Suspense
+          fallback={
+            // <PostsSkeleton />
+            <div>Posts</div>
+          }
+        >
+          <Posts />
+        </Suspense>
+      </div>
+    </section>
+  );
+};
+
+export default DashboardPage;
