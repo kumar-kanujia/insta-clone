@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
@@ -7,8 +6,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import { Toaster } from "sonner";
 import AuthProvider from "@/components/providers/AuthProvider";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter } from "./font";
 
 export const metadata: Metadata = {
   title: "Instaclone",
