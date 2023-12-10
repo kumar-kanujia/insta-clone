@@ -12,13 +12,20 @@ export default function LoginForm() {
           Please log in to continue.
         </h1>
 
-        <LoginButton />
+        <LoginButton clientName="Google" clientType="google" />
+        <LoginButton clientName="Github" clientType="github" />
       </div>
     </div>
   );
 }
 
-function LoginButton() {
+function LoginButton({
+  clientType,
+  clientName,
+}: {
+  clientType: "google" | "github";
+  clientName: "Google" | "Github";
+}) {
   const { pending } = useFormStatus();
 
   return (
@@ -26,9 +33,9 @@ function LoginButton() {
       className="mt-4 w-full"
       variant={"secondary"}
       aria-disabled={pending}
-      onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+      onClick={() => signIn(clientType, { callbackUrl: "/dashboard" })}
     >
-      Log in with Google
+      Log in with {clientName}
     </Button>
   );
 }

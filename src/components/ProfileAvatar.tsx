@@ -23,7 +23,13 @@ import { UploadButton } from "@/lib/uploadthing";
 import SubmitButton from "./SubmitButton";
 import { DialogClose } from "@radix-ui/react-dialog";
 
-const ProfileAvatar = ({ user }: { user: UserWithExtras }) => {
+const ProfileAvatar = ({
+  user,
+  children,
+}: {
+  user: UserWithExtras;
+  children: React.ReactNode;
+}) => {
   const { data: session } = useSession();
   const isCurrentUser = session?.user.id === user.id;
   const form = useForm<z.infer<typeof UpdateUser>>({
@@ -45,14 +51,7 @@ const ProfileAvatar = ({ user }: { user: UserWithExtras }) => {
     return <UserAvatar user={user} className="w-20 h-20 md:w-36 md:h-36" />;
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        {
-          <UserAvatar
-            user={user}
-            className="w-20 h-20 md:w-36 md:h-36 cursor-pointer"
-          />
-        }
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
 
       <DialogContent className="dialogContent">
         <DialogHeader>
