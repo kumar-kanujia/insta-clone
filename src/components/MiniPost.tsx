@@ -1,3 +1,4 @@
+"use client";
 import { PostWithExtras } from "@/lib/definitions";
 import { useSession } from "next-auth/react";
 import Link from "next/link";

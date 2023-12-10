@@ -1,10 +1,13 @@
+import MorePosts from "@/components/MorePosts";
+import SinglePost from "@/components/SinglePost";
 import { SinglePostSkeleton } from "@/components/Skeleton";
+import { Separator } from "@/components/ui/separator";
 import { Suspense } from "react";
 
 const PostPage = ({ params: { id } }: { params: { id: string } }) => {
   return (
     <div>
-      {/* <Suspense fallback={<SinglePostSkeleton />}>
+      <Suspense fallback={<SinglePostSkeleton />}>
         <SinglePost id={id} />
       </Suspense>
 
@@ -12,7 +15,7 @@ const PostPage = ({ params: { id } }: { params: { id: string } }) => {
 
       <Suspense>
         <MorePosts postId={id} />
-      </Suspense> */}
+      </Suspense>
     </div>
   );
 };
